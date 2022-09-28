@@ -1,4 +1,5 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import Block from './../components/Block';
+import { GetServerSideProps } from 'next';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	console.log(context.query);
@@ -15,7 +16,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	}
 
 	const json = await res.json();
-	const word = json[0];
+	const word: Word = json[0];
 
 	return {
 		props: {
@@ -24,9 +25,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	};
 };
 
-const WordPage = ({
-	word,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const WordPage = ({ word }: { word: Word }) => {
 	if (!word)
 		return (
 			<div className='font-bold text-8xl text-center my-4'>
@@ -37,14 +36,13 @@ const WordPage = ({
 	console.log(word);
 
 	return (
-		<div className='text-center'>
-			<h1 className='text-gray-700 font-bold text-5xl my-4 underline underline-offset-1'>
-				{word.word}
+		<div className='container mx-auto p-4 xl:max-w-[60%] lg:max-w-[70%] text-lg'>
+			<h1 className=' font-bold text-5xl my-4'>
+				<span className='underline underline-offset-1'>{word.word}</span>
+				<span className='text-xl no-underline ml-4'>{word.phonetic}</span>
 			</h1>
-			<p>
-				<span className='font-bold'>Definition: </span>
-				{word.meanings[0].definitions[0].definition}
-			</p>
+			<div className='divider'></div>
+			<Block word={word} />
 		</div>
 	);
 };
