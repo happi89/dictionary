@@ -10,10 +10,10 @@ export interface Word {
 	word: string;
 	phonetic: string;
 	meanings: Definition[];
+	phonetics: { audio: string }[];
 }
 
 const Block = ({ word }: { word: Word }) => {
-	console.log(word);
 	return (
 		<>
 			{' '}

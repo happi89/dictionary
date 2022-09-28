@@ -14,7 +14,6 @@ const WordForm = () => {
 			}}>
 			<input
 				type='text'
-				placeholder='word'
 				className='input input-bordered w-full focus:outline-none max-w-sm'
 				value={word}
 				onChange={({ target }) => setWord(target.value)}
