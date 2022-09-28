@@ -30,7 +30,7 @@ const Block = ({ word }: { word: Word }) => {
 									i: number
 								) => (
 									<li key={i} className='mt-2'>
-										{i} - {d.definition}
+										{i + 1} - {d.definition}
 									</li>
 								)
 							)}
