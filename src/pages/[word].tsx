@@ -1,5 +1,6 @@
 import Block from './../components/Block';
 import { GetServerSideProps } from 'next';
+import { Word } from './../components/Block';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	console.log(context.query);
