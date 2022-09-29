@@ -41,13 +41,14 @@ const WordPage = ({ word }: props) => {
 
 	const audio = new Audio(
 		word?.phonetics[word.phonetics.length - 1]?.audio ||
-			word?.phonetics[0]?.audio
+			word?.phonetics[0]?.audio ||
+			''
 	);
 
 	return (
 		<div className='container mx-auto p-4 xl:max-w-[60%] lg:max-w-[70%] text-lg'>
 			<h1 className=' font-bold text-5xl my-4 flex items-center'>
-				<span className='underline underline-offset-1'>{word.word}</span>
+				<span>{word.word}</span>
 				<span className='text-xl no-underline ml-4'>{word.phonetic}</span>
 				<button
 					className='btn btn-primary btn-ghost ml-4'
